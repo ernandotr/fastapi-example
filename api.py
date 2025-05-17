@@ -10,8 +10,13 @@ class User(BaseModel):
     email: str
     age: int
 
-@app.get("/", response_model = User)
-async def linuxtips():
+
+@app.get("/")
+def health():
+    return {"status": "UP"}
+
+@app.get("/users", response_model = User)
+async def get_users():
     return User(
         name ="Ernando Rezende",
         email = "ernando.03@gmail.com",
